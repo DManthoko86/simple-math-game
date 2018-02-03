@@ -1,4 +1,6 @@
+require 'game_logic.rb'
 class Guide
+	include GameLogic
 	# random number - rand(45)
 	class Config
 		@@actions = ['add','subtract','multiply','divide','times','random','quit']
@@ -10,19 +12,18 @@ class Guide
 		result = nil
 		until result == :quit
 			# => what do you want to do? (add, subtract, multiply, divide, timestables, random)
-			action,args = get_action
+			action,number_of_questions = get_action
 			# => do that action
 			# => repeat until user quits
-			result = do_action(action,args)
+			result = do_action(action,number_of_questions)
 		end
 		conclusion
 	end
 
-	def do_action(action, args=[])
+	def do_action(action="add", args="10")
 		case action
 		when 'add'
-			puts "starting addition exercise"
-			add(args[1])
+			add(args)
 		when 'subtract'
 			puts "starting subtraction exercise"
 		when 'multiply'
@@ -40,11 +41,6 @@ class Guide
 		end
 	end
 
-	def add(args=10)
-		puts "Inside add method"
-		puts "#{args}"
-	end
-
 	def get_action
 		action =nil;
 		#Keep asking for user input until we get a valid action
@@ -54,8 +50,9 @@ class Guide
 			user_response = gets.chomp
 			args = user_response.downcase.strip.split(' ')
 			action = args.shift
+			number_of_questions = args.shift || "10"	# default 10 questions
 		end
-		return [action,args]
+		return [action,number_of_questions]
 	end
 
 	def introduction
