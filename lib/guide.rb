@@ -21,20 +21,32 @@ class Guide
 	end
 
 	def do_action(action="add", args="10")
-		case action
-		when 'add'
+		# when 'add'
+		# 	case action
+		# 	basic_maths(action,args)
+		# when 'subtract'
+		# 	puts "starting subtraction exercise"
+		# when 'multiply'
+		# 	puts "starting multiplication exercise"
+		# when 'divide'
+		# 	puts "starting division exercise"
+		# when 'times'
+		# 	puts "starting timestables exercise"
+		# when 'random'
+		# 	puts "starting random questions exercise"
+		# when 'quit'
+		# 	return :quit
+		# else
+		# 	puts "\nI don't understand that command"
+		# end
+
+		if action == 'add' || action == 'subtract' || action == 'multiply' || action  == 'divide'
 			basic_maths(action,args)
-		when 'subtract'
-			puts "starting subtraction exercise"
-		when 'multiply'
-			puts "starting multiplication exercise"
-		when 'divide'
-			puts "starting division exercise"
-		when 'times'
+		elsif action == 'times'
 			puts "starting timestables exercise"
-		when 'random'
+		elsif action == 'random'
 			puts "starting random questions exercise"
-		when 'quit'
+		elsif action == 'quit'
 			return :quit
 		else
 			puts "\nI don't understand that command"
