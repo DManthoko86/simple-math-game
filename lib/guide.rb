@@ -23,7 +23,7 @@ class Guide
 	def do_action(action="add", args="10")
 		case action
 		when 'add'
-			add(args)
+			basic_maths(action,args)
 		when 'subtract'
 			puts "starting subtraction exercise"
 		when 'multiply'
