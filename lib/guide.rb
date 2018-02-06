@@ -17,29 +17,10 @@ class Guide
 			# => repeat until user quits
 			result = do_action(action,number_of_questions)
 		end
-		conclusion
+		close_game
 	end
 
 	def do_action(action="add", args="10")
-		# when 'add'
-		# 	case action
-		# 	basic_maths(action,args)
-		# when 'subtract'
-		# 	puts "starting subtraction exercise"
-		# when 'multiply'
-		# 	puts "starting multiplication exercise"
-		# when 'divide'
-		# 	puts "starting division exercise"
-		# when 'times'
-		# 	puts "starting timestables exercise"
-		# when 'random'
-		# 	puts "starting random questions exercise"
-		# when 'quit'
-		# 	return :quit
-		# else
-		# 	puts "\nI don't understand that command"
-		# end
-
 		if action == 'add' || action == 'subtract' || action == 'multiply' || action  == 'divide'
 			basic_maths(action,args)
 		elsif action == 'times'
@@ -70,9 +51,10 @@ class Guide
 	def introduction
 		puts "\n\n <<< Welcome to Simple Maths >>>\n\n"
 		puts "Improve your basic math with this simple application.\n\n"
+		puts "Actions: " + Guide::Config.actions.join(", ")
 	end
 
-	def conclusion
+	def close_game
 		puts "\n<<< See you next time >>>"
 	end
 end
